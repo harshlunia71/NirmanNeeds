@@ -11,9 +11,30 @@ It is meant for experimentation and to be used by a local business, intending to
 
 ## Setup
 
-1. Clone the repository and install dependencies:
+1. Clone the repository:
 
 ```bash
 git clone git@github.com:harshlunia71/NirmanNeeds.git
+cd NirmanNeeds
+```
 
+2. Install dependencies
+
+- Linux
+
+```bash
+sudo apt update -y
+sudo apt install docker docker-compose just
+```
+
+- MacOS (HomeBrew)
+
+```bash
+brew install docker docker-compose just
+```
+
+3. Build and start containers
+
+```bash
+just build
 ```
