@@ -1,0 +1,12 @@
+# Official Wordpress CLI image
+FROM wordpress:cli
+
+# Install official MySQL 8 client
+RUN apk add --no-cache mysql-client;
+
+# Copy Install Wordpress script into image
+USER root:root
+COPY ./bin/install-wp.sh /usr/local/bin/install-wp
+RUN chmod +x /usr/local/bin/install-wp;
+
+USER 1000:1000
