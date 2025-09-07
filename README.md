@@ -1,7 +1,15 @@
-# NirmanNeeds - A Dockerized Wordpress E-Commerce website
+# NirmanNeeds - A Dockerized Wordpress E-Commerce website (
+
+![status](https://img.shields.io/badge/status-WIP-orange)
 
 As part of a personal project, this is a Wordpress e-commerce website with containerised deployment through Docker.
 It is meant for experimentation and to be used by a local business, intending to digitalise their sales workflows.
+
+## ⚠️ Status: Work in Progress
+
+This project is still under active development.  
+Not all functionality has been implemented, and documentation is incomplete.  
+Use at your own risk.
 
 ## Technical Requirements
 
