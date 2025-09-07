@@ -1,4 +1,4 @@
-# NirmanNeeds - A Dockerized Wordpress E-Commerce website (
+# NirmanNeeds - A Dockerized Wordpress E-Commerce website
 
 ![status](https://img.shields.io/badge/status-WIP-orange)
 
