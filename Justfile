@@ -12,16 +12,16 @@ init: up
 	just run-cli "/usr/local/bin/install-wp"
 
 build file="": init 
-	just restore file
+	just restore {{file}}
 	
 backup:
 	./bin/db_backup.sh
 
 restore file="":
-	./bin/db_restore.sh file
+	./bin/db_restore.sh {{file}}
 
 rebuild file="": backup clean 
-	just build file
+	just build {{file}}
 
 restart: down up
 
@@ -30,8 +30,8 @@ list:
     docker compose volumes
 
 run-cli cmd="sh":
-    docker compose run --build --rm --remove-orphans wp-cli cmd
+    docker compose run --rm --remove-orphans wp-cli {{cmd}}
 
 make-pot:
-    just run-cli "./bin/make-pot.sh"
+    just run-cli "/usr/local/bin/make-pot"
 
