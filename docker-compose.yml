@@ -68,6 +68,7 @@ services:
     volumes:
       - wp-data:/var/www/html
       - ./bin/install-wp.sh:/usr/local/bin/install-wp:ro,Z
+      - ./bin/make-pot.sh:/usr/local/bin/make-pot:ro,Z
       - ./wp-content/plugins/nn-plugin:/var/www/html/wp-content/plugins/nn-plugin
       - ./.backup:/var/www/html/.backup
     networks:

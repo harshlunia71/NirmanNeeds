@@ -9,7 +9,7 @@ class NNPL_I18N {
         load_plugin_textdomain(
             NN_PLUGIN_SLUG,
             false,
-            NN_PLUGIN_PATH
+            NN_PLUGIN_PATH . '/languages/'
         );
     }
 }
