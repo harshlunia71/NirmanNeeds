@@ -47,7 +47,7 @@ services:
       WORDPRESS_DB_PASSWORD: "${MYSQL_PASSWORD}"
     volumes:
       - wp-data:/var/www/html
-      - ./wp-content/plugins/site-plugin:/var/www/html/wp-content/plugins/site-plugin
+      - ./wp-content/plugins/nn-plugin:/var/www/html/wp-content/plugins/nn-plugin
       - ./.backup:/var/www/html/.backup
     networks:
       - wordpress-network
@@ -68,7 +68,7 @@ services:
     volumes:
       - wp-data:/var/www/html
       - ./bin/install-wp.sh:/usr/local/bin/install-wp:ro,Z
-      - ./wp-content/plugins/site-plugin:/var/www/html/wp-content/plugins/site-plugin
+      - ./wp-content/plugins/nn-plugin:/var/www/html/wp-content/plugins/nn-plugin
       - ./.backup:/var/www/html/.backup
     networks:
       - wordpress-network
