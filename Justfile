@@ -9,7 +9,7 @@ clean:
 	docker compose down -v --remove-orphans
 
 init: up
-	docker compose run --build --rm --remove-orphans wp-cli /usr/local/bin/install-wp
+	just run-cli "/usr/local/bin/install-wp"
 
 build file="": init 
 	just restore file
@@ -22,4 +22,16 @@ restore file="":
 
 rebuild file="": backup clean 
 	just build file
+
 restart: down up
+
+list:
+    docker compose ps
+    docker compose volumes
+
+run-cli cmd="sh":
+    docker compose run --build --rm --remove-orphans wp-cli cmd
+
+make-pot:
+    just run-cli "./bin/make-pot.sh"
+
