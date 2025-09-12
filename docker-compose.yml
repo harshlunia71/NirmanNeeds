@@ -11,6 +11,11 @@ services:
       MYSQL_USER: "${MYSQL_USER}"
       MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
     command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
+      start_period: 5s
     volumes:
       - db-data:/var/lib/mysql:rw
     networks:
@@ -47,8 +52,11 @@ services:
       WORDPRESS_DB_PASSWORD: "${MYSQL_PASSWORD}"
     volumes:
       - wp-data:/var/www/html
-      - ./wp-content/plugins/nn-plugin:/var/www/html/wp-content/plugins/nn-plugin
+      - ./wp-content/plugins/nirman-needsn:/var/www/html/wp-content/plugins/nirman-needs
       - ./.backup:/var/www/html/.backup
+      - ./wp-update-options.php:${SCRIPT_PATH}/wp-update-options.php:ro
+      - ./wp-options.json:${CONFIG_PATH}/wp-options.json:ro
+
     networks:
       - wordpress-network
 
@@ -67,9 +75,13 @@ services:
       WORDPRESS_DB_PASSWORD: "${MYSQL_PASSWORD}"
     volumes:
       - wp-data:/var/www/html
-      - ./bin/install-wp.sh:/usr/local/bin/install-wp:ro,Z
+      - ./bin/wp-custom-install.sh:/usr/local/bin/wp-custom-install:ro,Z
+      - ./bin/nc-mysql.sh:/usr/local/bin/nc-mysql:ro,Z
       - ./bin/make-pot.sh:/usr/local/bin/make-pot:ro,Z
-      - ./wp-content/plugins/nn-plugin:/var/www/html/wp-content/plugins/nn-plugin
+      - ./bin/wp-update-options.sh:/usr/local/bin/wp-update-options:ro,Z
+      - ./wp-update-options.php:${SCRIPT_PATH}/wp-update-options.php:ro
+      - ./wp-options.json:${CONFIG_PATH}/wp-options.json:ro
+      - ./wp-content/plugins/nirman-needs/:/var/www/html/wp-content/plugins/nirman-needs
       - ./.backup:/var/www/html/.backup
     networks:
       - wordpress-network

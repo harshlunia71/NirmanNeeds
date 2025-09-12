@@ -5,6 +5,8 @@ BACKUP_FOLDER="$PROJECT_PATH/.backup"
 LS_ERROR_FILE="$( mktemp -q /tmp/nn.backup_ls_error-XXXXXX )"
 INPUT_FILE="$BACKUP_FOLDER/$1"
 
+docker compose run -T --build --rm --remove-orphans wp-cli /usr/local/bin/nc-mysql
+
 if [ -n "$1" ] && [ -r "$INPUT_FILE" ]; then
 	BACKUP_GZIP="$INPUT_FILE"
 else
