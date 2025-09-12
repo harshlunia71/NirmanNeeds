@@ -1,0 +1,12 @@
+{
+  "name": "nirman-needs/nirman-needs",
+  "description": "A simple plugin to extend functionality for nirman-needs site",
+  "type": "wordpress-plugin",
+  "autoload": {
+    "psr-4": {
+      "\\NirmanNeeds\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {}
+}
