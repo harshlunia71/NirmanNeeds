@@ -52,7 +52,7 @@ services:
       WORDPRESS_DB_PASSWORD: "${MYSQL_PASSWORD}"
     volumes:
       - wp-data:/var/www/html
-      - ./wp-content/plugins/nirman-needsn:/var/www/html/wp-content/plugins/nirman-needs
+      - ./wp-content/plugins/nirman-needs:/var/www/html/wp-content/plugins/nirman-needs
       - ./.backup:/var/www/html/.backup
       - ./wp-update-options.php:${SCRIPT_PATH}/wp-update-options.php:ro
       - ./wp-options.json:${CONFIG_PATH}/wp-options.json:ro
