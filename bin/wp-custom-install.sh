@@ -1,0 +1,50 @@
+#!/usr/bin/env sh
+
+strip_quotes () {
+	echo "$*" | xargs
+}
+
+# Wait for database connection
+/usr/local/bin/nc-mysql
+
+# Install Wordpress
+wp core install \
+	--path="${WP_PATH}" \
+	--url="${WP_EXTERNAL_URL}" \
+	--title="$(strip_quotes ${WP_TITLE})" \
+	--admin_user="${WP_ADMIN_USER}" \
+	--admin_password="${WP_ADMIN_PASSWORD}" \
+	--admin_email="${WP_ADMIN_EMAIL}"
+
+# Theme installation
+wp theme install $(strip_quotes "${WP_THEME}") --activate
+wp theme delete --all
+
+# Delete unwanted plugins
+wp plugin delete akismet hello
+
+# Plugin installation
+wp plugin install $(strip_quotes "${WP_PLUGINS}") --activate
+
+# Custom plugin activation
+wp plugin activate "${WP_CUSTOM_PLUGIN}"
+wp plugin auto-updates enable --all
+
+printf "\nREPORT\n"
+
+# List users
+echo "===User List==="
+wp user list
+echo ""
+
+# Show installed themes
+echo "===Theme List==="
+wp theme list
+echo ""
+
+# Show installed plugins
+echo "===Plugin List==="
+wp plugin list
+echo ""
+
+

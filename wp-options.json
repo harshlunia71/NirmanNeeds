@@ -1,0 +1,8 @@
+{
+  "siteurl": "WP_EXTERNAL_URL",
+  "home": "WP_EXTERNAL_URL",
+  "blogname": "WP_TITLE",
+  "admin-email": "WP_ADMIN_EMAIL",
+  "template": "WP_THEME",
+  "stylesheet": "WP_THEME"
+}
