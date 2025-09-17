@@ -46,10 +46,14 @@ services:
     env_file: .env
     user: 1000:1000
     environment:
+      WORDPRESS_DEBUG: ${WP_DEBUG}
       WORDPRESS_DB_HOST: mysql:${MYSQL_EXTERNAL_PORT}
       WORDPRESS_DB_NAME: "${MYSQL_DATABASE}"
       WORDPRESS_DB_USER: "${MYSQL_USER}"
       WORDPRESS_DB_PASSWORD: "${MYSQL_PASSWORD}"
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_DEBUG_LOG', ${WP_DEBUG_LOG});
+        define('WP_DEBUG_DISPLAY', false);
     volumes:
       - wp-data:/var/www/html
       - ./wp-content/plugins/nirman-needs:/var/www/html/wp-content/plugins/nirman-needs

@@ -15,7 +15,7 @@ class Plugin {
     public function init(): void
     {
         if (is_admin()) {
-            $admin_settings = Settings();
+            $admin_settings = new Settings();
             $admin_settings->init();
         } 
     } 
@@ -23,11 +23,6 @@ class Plugin {
     public function get_version(): string 
     {
         return $this->version;
-    }
-
-    public function get_loader(): string 
-    {
-        return $this->loader;
     }
 
     public function get_plugin_name(): string 
