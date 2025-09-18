@@ -41,7 +41,7 @@ class DatabaseManager {
     }
 
     public function get_table(string $table_name): ?DatabaseTable {
-        return $this->table[$table_name] ?? null;
+        return $this->tables[$table_name] ?? null;
     }
 
     
