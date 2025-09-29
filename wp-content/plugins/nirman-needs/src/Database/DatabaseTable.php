@@ -23,7 +23,7 @@ abstract class DatabaseTable {
     abstract protected function set_table_name(): void;
     abstract protected function set_column_formats(): void;
     abstract public function get_schema(): string;
-
+    
     /**
      * @param array $columns Array of columns to be mapped to their formats.
      */

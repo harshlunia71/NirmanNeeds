@@ -4,5 +4,6 @@
   "blogname": "WP_TITLE",
   "admin-email": "WP_ADMIN_EMAIL",
   "template": "WP_THEME",
-  "stylesheet": "WP_THEME"
+  "stylesheet": "WP_THEME",
+  "timezone_string": "WP_TIMEZONE"
 }

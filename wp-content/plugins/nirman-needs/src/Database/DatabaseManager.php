@@ -6,6 +6,7 @@ use \NirmanNeeds\Database\ProductDataTable;
 
 defined('ABSPATH') || die;
 
+
 class DatabaseManager {
     
     private static $instance = null;
@@ -13,7 +14,7 @@ class DatabaseManager {
     /** 
      * @var DatabaseTable[];
      */
-    private $tables;
+    private array $tables;
 
     /**
      * @param wpdb $wpdb WP Database Object
